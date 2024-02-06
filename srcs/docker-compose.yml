@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+    # other NGINX configurations...
+
+  wordpress:
+    build:
+      context: ./wordpress
+    # other WordPress configurations...
+
+  mariadb:
+    build:
+      context: ./mariadb
+    # other MariaDB configurations...
