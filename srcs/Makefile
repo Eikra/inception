@@ -1,11 +1,7 @@
-all : build
+all: setup
 
-build :
-	docker-compose build
-
-up :
-	docker-compose up -d
-
-down :
+setup:
+	docker-compose up --build
+	
+down:
 	docker-compose down
-#////
