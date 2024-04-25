@@ -6,11 +6,11 @@ RUN apt-get update && \
     apt-get install -y nginx openssl bash && \
     rm -rf /var/lib/apt/lists/*
 
-# Remove default NGINX website
+# # Remove default NGINX website
 RUN rm -rf /var/www/html/*
 
-# Copy custom NGINX configuration
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+# # Copy custom NGINX configuration
+COPY conf/default /etc/nginx/sites-available/default
 
 # Create directory for SSL certificates
 RUN mkdir -p /etc/nginx/ssl
@@ -23,6 +23,7 @@ RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt \
 
 # Expose port 443 for HTTPS
 EXPOSE 443
+#EXPOSE 80
 
 # Start NGINX in the foreground
 CMD ["nginx", "-g", "daemon off;"]
