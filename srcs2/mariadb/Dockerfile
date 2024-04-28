@@ -8,4 +8,4 @@ RUN apk --update --no-cache add mariadb
 COPY ./conf/my.cnf /etc/my.cnf
 
 # CMD to start MariaDB in the foreground
-CMD ["mysqld", "--user=mysql", "--console"]
+CMD ["mysqld", "--console"]
