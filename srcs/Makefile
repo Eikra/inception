@@ -1,7 +1,16 @@
-all: setup
+all : up
 
-setup:
-	docker-compose up --build
-	
-down:
-	docker-compose down
+up : 
+	@docker-compose -f ./docker-compose.yml up -d
+
+down : 
+	@docker-compose -f ./docker-compose.yml down
+
+stop : 
+	@docker-compose -f ./docker-compose.yml stop
+
+start : 
+	@docker-compose -f ./docker-compose.yml start
+
+status : 
+	@docker ps

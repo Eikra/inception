@@ -3,6 +3,10 @@
 set -e
 
 # Start MariaDB service
+export SQL_DATABASE=mydatabase
+export SQL_USER=myuser
+export SQL_PASSWORD=mypassword
+export SQL_ROOT_PASSWORD=rootpassword
 service mysql start
 
 # Wait for MariaDB service to be ready
