@@ -1,5 +1,5 @@
 # Use Debian as the base image
-FROM debian:stable-slim
+FROM debian:buster-slim
 
 # Install MariaDB
 RUN apt-get update && apt-get install -y mariadb-server
@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y mariadb-server
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # Expose MariaDB port
-EXPOSE 3306
+#EXPOSE 3306
 
 # Set up entrypoint script
 COPY ./tools/entrypoint.sh /entrypoint.sh
