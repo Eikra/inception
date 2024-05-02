@@ -5,14 +5,14 @@ volumes:
                 name: wordpress
                 driver: local
                 driver_opts:
-                        device: /home/iecharak/Desktop/inception/srcs/requirements/wordpress/data
+                        device: /Users/m/Desktop/inception/srcs/requirements/wordpress/data
                         o: bind
                         type: none
         mariadb:
                 name: mariadb
                 driver: local
                 driver_opts:
-                        device: /home/iecharak/Desktop/inception/srcs/requirements/mariadb/data
+                        device: /Users/m/Desktop/inception/srcs/requirements/mariadb/data
                         o: bind
                         type: none
 
