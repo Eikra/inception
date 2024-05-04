@@ -11,8 +11,7 @@ RUN apt-get update && apt-get -y install \
 	php-pdo \
 	php-gd php-cli \
 	php-mbstring \
-	redis \
-	php-redis \
+	mariadb-client \
 	&& rm -rf /var/lib/apt/lists/*
 
 # I need to install wp_cli command and put it in the right directory /usr/local/bin
@@ -29,16 +28,20 @@ RUN mkdir /run/php
 #we copy the script, give the right to launch it in local on our computer
 COPY ./tools/create_wordpress.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/create_wordpress.sh
-ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
 
 #We go the html directory
 WORKDIR /var/www/html/
 
 #We expose the 9000 port
 EXPOSE 9000
+ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
 
-#Launch PHP FPM in foreground and ignore deamonize from conf file (-F)
-CMD ["/usr/sbin/php-fpm7.3", "-F"]
+
+
+# #Launch PHP FPM in foreground and ignore deamonize from conf file (-F)
+# CMD ["/usr/sbin/php-fpm7.3", "-F"]
+
+######################################################################################
 
 # # Use the latest Debian slim image
 # FROM debian:bullseye-slim
