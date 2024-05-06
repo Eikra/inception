@@ -16,6 +16,9 @@ else
     sed -i "s/password_here/$MYSQL_PASSWORD/g" wp-config-sample.php
     sed -i "s/localhost/$MYSQL_HOSTNAME/g" wp-config-sample.php
     cp wp-config-sample.php wp-config.php
+    wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
+    # wp user create --allow-root  $WP_USR $WP_EMAIL --user_pass=$WP_PWD 
+    wp user create --allow-root  $WP_USR $WP_EMAIL --user_pass=$WP_PWD  --path=/var/www/html/wordpress/
 
     echo "WordPress installed successfully"
 fi
