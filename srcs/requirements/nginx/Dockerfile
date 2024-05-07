@@ -8,7 +8,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # # Remove default NGINX website
-RUN rm -rf /var/www/html/*
+# RUN rm -rf /var/www/html/*
 
 # # Copy custom NGINX configuration
 COPY conf/default /etc/nginx/sites-available/default
