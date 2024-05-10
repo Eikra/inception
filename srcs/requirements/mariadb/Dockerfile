@@ -16,11 +16,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Expose MySQL port
-EXPOSE 3306
-
 # Set the entry point to the setup script
-ENTRYPOINT ["/usr/local/bin/setup_mariadb.sh"]
+CMD ["/usr/local/bin/setup_mariadb.sh"]
 
 
 

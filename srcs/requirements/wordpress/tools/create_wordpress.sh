@@ -4,11 +4,6 @@
 if [ -f ./wp-config.php ]; then
     echo "WordPress already installed"
 else
-    # Download WordPress and configure it
-    wget http://wordpress.org/latest.tar.gz
-    tar xfz latest.tar.gz
-    mv wordpress/* .
-    rm -rf latest.tar.gz wordpress
     # chown -R www-data:www-data /var/www/html/wordpress
 
     # Import environment variables into the config file
@@ -22,8 +17,6 @@ else
 
     # Create the second user
     wp user create $WP_USR $WP_EMAIL --user_pass=$WP_PWD --allow-root
-
-    echo "WordPress installed successfully"
 fi
 
 # Start PHP-FPM

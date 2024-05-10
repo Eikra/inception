@@ -31,11 +31,11 @@ RUN chmod +x /usr/local/bin/create_wordpress.sh
 
 #We go the html directory
 WORKDIR /var/www/html/
-RUN wget http://wordpress.org/latest.tar.gz
+
+# Download WordPress and configure it
+RUN wget https://wordpress.org/latest.tar.gz
 RUN tar xfz latest.tar.gz
 RUN mv wordpress/* .
 RUN rm -rf latest.tar.gz wordpress
 
-#We expose the 9000 port
-EXPOSE 9000
-ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
+CMD ["/usr/local/bin/create_wordpress.sh"]
