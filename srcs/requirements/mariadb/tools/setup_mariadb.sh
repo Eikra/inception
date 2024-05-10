@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# set -x
 # Start MariaDB service
 service mysql start
 
@@ -17,10 +18,11 @@ mysql -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'$MYSQL_HOSTNAME' IDEN
 mysql -u root -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-echo "Database setup complete!"
+# echo "Database setup complete!"
 
-# Shutdown MariaDB service
-# mysqladmin -u root -p${SQL_ROOT_PASSWORD} shutdown
+# stop MariaDB service
+# Wait for MariaDB service to shut down
+sleep 5
 service mysql stop
 # Start MariaDB server
 mysqld_safe

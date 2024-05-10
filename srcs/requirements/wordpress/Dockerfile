@@ -1,41 +1,40 @@
-FROM debian:buster
+FROM debian:buster-slim
 
 RUN apt-get update && apt-get -y install \
 	wget \
 	curl \
-	bash \
 	php \
-	php-cgi \
-	php-mysql \
 	php-fpm \
-	php-pdo \
-	php-gd php-cli \
+	php-mysql \
+	php-gd \
 	php-mbstring \
 	mariadb-client \
 	&& rm -rf /var/lib/apt/lists/*
 
-# I need to install wp_cli command and put it in the right directory /usr/local/bin
+# Install wp-cli
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   && chmod +x wp-cli.phar \
   && mv wp-cli.phar /usr/local/bin/wp
 
-# Copy the .conf in the html directory
+# Copy the PHP-FPM configuration
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/
 
-#Create the folder to enable php start
+# Create the folder to enable PHP start
 RUN mkdir /run/php
 
-#we copy the script, give the right to launch it in local on our computer
+# Copy the script and give the right permissions
 COPY ./tools/create_wordpress.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/create_wordpress.sh
 
-#We go the html directory
+# Set the working directory
 WORKDIR /var/www/html/
 
 # Download WordPress and configure it
-RUN wget https://wordpress.org/latest.tar.gz
-RUN tar xfz latest.tar.gz
-RUN mv wordpress/* .
-RUN rm -rf latest.tar.gz wordpress
+RUN wget https://wordpress.org/latest.tar.gz \
+  && tar xfz latest.tar.gz \
+  && mv wordpress/* . \
+  && rm -rf latest.tar.gz wordpress
 
+# Command to run the script
 CMD ["/usr/local/bin/create_wordpress.sh"]
+
