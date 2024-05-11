@@ -1,1 +1,7 @@
 DROP DATABASE wordpress;
+************************************************
+A Dockerfile allows you to document the steps to set up the environment for your application. The Docker Engine will parse your Dockerfile, and create a Docker Image from it.
+************************************************
+OpenSSL is an open-source implementation of the SSL and TLS protocols.
+OpenSSL provides a comprehensive library of encryption algorithms, including the most widely used algorithms such as AES and RSA.
+It also provides a variety of tools for managing SSL certificates and for generating and managing private keys.

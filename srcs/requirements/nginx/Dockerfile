@@ -4,7 +4,7 @@ FROM debian:buster-slim
 # Install NGINX, openssl (for generating self-signed certificate), and bash (for shell)
 RUN apt-get update && \
     apt upgrade -y && \
-    apt-get install -y nginx openssl bash && \
+    apt-get install -y nginx openssl && \
     rm -rf /var/lib/apt/lists/*
 
 # Remove default NGINX website
