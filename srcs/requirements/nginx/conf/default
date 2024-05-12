@@ -3,8 +3,8 @@ server {
     listen 443 ssl;
     # server_name login.42.fr;
     ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_certificate /etc/nginx/ssl/inception.crt;
-    ssl_certificate_key /etc/nginx/ssl/inception.key;
+    ssl_certificate CERT_HERE;
+    ssl_certificate_key CERT_KEY_HERE;
 
     #root and index and server_name
     root /var/www/html;

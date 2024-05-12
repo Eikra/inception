@@ -21,3 +21,4 @@ fi
 
 # Start PHP-FPM
 /usr/sbin/php-fpm7.3 -F
+

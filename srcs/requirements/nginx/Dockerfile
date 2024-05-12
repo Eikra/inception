@@ -10,21 +10,15 @@ RUN apt-get update && \
 # Remove default NGINX website
 RUN rm -rf /var/www/html/*
 
-# # Copy custom NGINX configuration
+# Copy custom NGINX configuration
 COPY conf/default /etc/nginx/sites-available/default
-
-# Create directory for SSL certificates
-RUN mkdir -p /etc/nginx/ssl
-
-# Generate self-signed SSL certificate
-RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt \
-    -keyout /etc/nginx/ssl/inception.key \
-    -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=iecharak.42.fr/UID=login"
 
 # nginx config
 RUN mkdir -p /run/nginx
+# Copy the script and give the right permissions
+COPY ./tools/start_nginx.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/start_nginx.sh
 
-# Start NGINX in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "start_nginx.sh" ]
 
 
