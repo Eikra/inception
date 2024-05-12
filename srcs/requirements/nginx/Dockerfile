@@ -1,4 +1,4 @@
-# Use Debian 10 (Buster) as the base image
+# Use Debian 10 (buster) as the base image
 FROM debian:buster-slim
 
 # Install NGINX, openssl (for generating self-signed certificate), and bash (for shell)

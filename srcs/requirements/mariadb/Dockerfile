@@ -1,4 +1,4 @@
-# Use Debian Buster slim as base image
+# Use Debian buster slim as base image
 FROM debian:buster-slim
 
 # Copy the MySQL configuration file
