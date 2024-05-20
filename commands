@@ -14,3 +14,12 @@ php-mysql provides MySQL support for PHP.
 php-json provides JSON support for PHP.
 php-xml provides XML support for PHP.
 php-mbstring provides multi-byte string support for PHP.
+php-gd: GD is a graphics library for creating and manipulating images dynamically.
+        This package provides PHP bindings for the GD library, enabling PHP scripts to create,
+        modify, and output images in various formats, including GIF, JPEG, and PNG.
+************************************************
+        docker run -d -p 80:80 --name webapp -v /mydata:/data -e ENV_VAR=value myimage
+docker run -d --name db -e MYSQL_ROOT_PASSWORD=rootpassword mysql
+*************************************************
+openssl s_client -connect iecharak.42.fr:443
+openssl s_client -connect intra.42.fr:443
